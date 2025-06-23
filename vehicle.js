@@ -38,5 +38,8 @@ async function fetchDrivers(id) {
 
 const renderVehicle = vehicle => {
     document.title = `SWAPI - ${vehicle?.vehicle_class}`;  // Just to make the browser tab say their name (yoinked from character.js, didn't know you could do this)
-    nameH1.textContent = vehicle?.vehicle_class
+    nameH1.textContent = `Vehicle Name: ${vehicle?.vehicle_class}`
+    const driversList = vehicle?.drivers?.map(driver => `<li><a href="/character.html?id=${driver.id}">${driver.name}</li>`)
+    console.log(drivers)
+    drivers.innerHTML = driversList.join("");
 }
