@@ -5,10 +5,10 @@ let director;
 let release_date;
 let opening_crawl;
 
-let planetsDiv;
-let vehiclesDiv;
-let speciesDiv;
-let starshipsDiv;
+let planetsUl;
+let vehiclesUl;
+let speciesUl;
+let starshipsUl;
 
 const baseUrl = `http://localhost:9001/api`;
 
@@ -21,10 +21,10 @@ addEventListener("DOMContentLoaded", () => {
   release_date = document.querySelector("span#release_date");
   opening_crawl = document.querySelector("span#opening_crawl");
 
-  planetsUl = document.querySelector("#films>ul");
-  vehiclesUl = document.querySelector("#films>ul");
-  speciesUl = document.querySelector("#films>ul");
-  starshipsUl = document.querySelector("#films>ul");
+  planetsUl = document.querySelector("#planets>ul");
+  vehiclesUl = document.querySelector("#vehicles>ul");
+  speciesUl = document.querySelector("#species>ul");
+  starshipsUl = document.querySelector("#starships>ul");
 
   const sp = new URLSearchParams(window.location.search);
   const id = sp.get("id");
@@ -42,7 +42,7 @@ async function getFilm(id) {
   } catch (ex) {
     console.error(`Error reading character ${id} data.`, ex.message);
   }
-  renderFilm(character);
+  renderFilm(film);
 }
 
 async function fetchFilm(id) {
@@ -77,23 +77,23 @@ async function fetchStarships(id) {
 const renderFilm = (film) => {
   document.title = `SWAPI - ${film?.title}`;
 
-  title.textContent = character?.title;
-  producer.textContent = character?.producer;
-  episode.textContent = character?.episode;
-  director.textContent = character?.director;
-  release_date.textContent = character?.release_date;
-  opening_crawl.textContent = character?.opening_crawl;
+  title.textContent = film?.title;
+  producer.textContent = film?.producer;
+  episode.textContent = film?.episode;
+  director.textContent = film?.director;
+  release_date.textContent = film?.release_date;
+  opening_crawl.textContent = film?.opening_crawl;
 
   const planetsList = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`);
   planetsUl.innerHTML = planetsList.join("");
 
-  const vehiclesList = film?.vehicles?.map(vehicles => `<li><a href="/vehicles.html?id=${vehicles.id}">${vehicles.vehicles_class}</li>`);
+  const vehiclesList = film?.vehicles?.map(vehicles => `<li><a href="/vehicles.html?id=${vehicles.id}">${vehicles.name}</li>`);
   vehiclesUl.innerHTML = vehiclesList.join("");
 
   const speciesList = film?.species?.map(species => `<li><a href="/species.html?id=${species.id}">${species.name}</li>`);
   speciesUl.innerHTML = speciesList.join("");
 
-  const starshipsList = film?.starships?.map(starships => `<li><a href="/starships.html?id=${starships.id}">${starships.starship_class}</li>`);
+  const starshipsList = film?.starships?.map(starships => `<li><a href="/starships.html?id=${starships.id}">${starships.name}</li>`);
   starshipsUl.innerHTML = starshipsList.join("");
 };
 
