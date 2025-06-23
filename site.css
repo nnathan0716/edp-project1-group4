@@ -112,7 +112,6 @@ section#films a {
   display: inline-block;
   text-decoration: none;
   font-size: 1.1em;
-
   background-color: var(--light2);
   color: var(--dark2);
   font-weight: bold;
@@ -120,4 +119,83 @@ section#films a {
   margin: 10px;
   border-radius: 5px;
   border: 1px solid var(--dark2);
+}
+
+/* Planet Details */
+#planet-details {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#planet-details h1 {
+  color: var(--dark2);
+  text-align: center;
+  border-bottom: 2px solid var(--light2);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#planet-info {
+  background-color: var(--light2);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#planet-info p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.navigation {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid var(--light2);
+}
+
+.navigation a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--dark2);
+  color: var(--light1);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navigation a:hover {
+  background-color: var(--dark1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #planet-details {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .navigation a {
+    padding: 8px 16px;
+  }
+}
+
+/* Starting Page Enhancements */
+#starting-page-title {
+  font-size: 2.5em;
+  font-family: 'Courier New', Courier, monospace; /* Example of a cooler font */
+  text-align: center;
+  margin-top: 20px;
+  color: var(--dark2);
+}
+
+#starting-page-description {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: var(--dark1);
 }
