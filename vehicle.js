@@ -11,6 +11,7 @@ addEventListener('DOMContentLoaded', () => {
     getVehicle(id)
 });
 
+// Get all data from APi
 async function getVehicle(id) {
     let vehicle;
     try {
@@ -25,6 +26,7 @@ async function getVehicle(id) {
         renderVehicle(vehicle);
 }
 
+// Functions for fetching API data
 async function fetchVehicle(id) {
     let vehicleUrl = `${baseUrl}/vehicles/${id}`;
     return await fetch(vehicleUrl)
@@ -36,6 +38,7 @@ async function fetchDrivers(id) {
       .then(res => res.json())
 }
 
+// Rendering data
 const renderVehicle = vehicle => {
     document.title = `SWAPI - ${vehicle?.vehicle_class}`;  // Just to make the browser tab say their name (yoinked from character.js, didn't know you could do this)
     nameH1.textContent = `Vehicle Name: ${vehicle?.vehicle_class}`
