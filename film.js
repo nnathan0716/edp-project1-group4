@@ -31,21 +31,23 @@ addEventListener('DOMContentLoaded', () => {
   getFilm(id)
 });
 
-async function getCharacter(id) {
-  let character;
+async function getFilm(id) {
+  let film;
   try {
-    character = await fetchCharacter(id)
-    character.homeworld = await fetchHomeworld(character)
-    character.films = await fetchFilms(character)
+    film = await fetchFilm(id)
+    film.planets = await fetchPlanets(id)
+    film.vehicles = await fetchVehicles(id)
+    film.species = await fetchSpecies(id)
+    film.starships = await fetchStarships(id)
   }
   catch (ex) {
     console.error(`Error reading character ${id} data.`, ex.message);
   }
-  renderCharacter(character);
-
+  renderFilm(character);
 }
-async function fetchCharacter(id) {
-  let characterUrl = `${baseUrl}/characters/${id}`;
+
+async function fetchFilm(id) {
+  let filmUrl = `${baseUrl}/films/${id}`;
   return await fetch(characterUrl)
     .then(res => res.json())
 }
