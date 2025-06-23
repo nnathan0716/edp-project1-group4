@@ -13,34 +13,33 @@ let starshipsDiv;
 const baseUrl = `http://localhost:9001/api`;
 
 // Runs on page load
-addEventListener('DOMContentLoaded', () => {
-  title = document.querySelector('h1#title');
-  producer = document.querySelector('span#producer');
-  episode = document.querySelector('span#episode');
-  director = document.querySelector('span#director');
-  release_date = document.querySelector('span#release_date');
-  opening_crawl = document.querySelector('span#opening_crawl');
-  
-  planetsUl = document.querySelector('#films>ul');
-  vehiclesUl = document.querySelector('#films>ul');
-  speciesUl = document.querySelector('#films>ul');
-  starshipsUl = document.querySelector('#films>ul');
+addEventListener("DOMContentLoaded", () => {
+  title = document.querySelector("h1#title");
+  producer = document.querySelector("span#producer");
+  episode = document.querySelector("span#episode");
+  director = document.querySelector("span#director");
+  release_date = document.querySelector("span#release_date");
+  opening_crawl = document.querySelector("span#opening_crawl");
 
-  const sp = new URLSearchParams(window.location.search)
-  const id = sp.get('id')
-  getFilm(id)
+  planetsUl = document.querySelector("#films>ul");
+  vehiclesUl = document.querySelector("#films>ul");
+  speciesUl = document.querySelector("#films>ul");
+  starshipsUl = document.querySelector("#films>ul");
+
+  const sp = new URLSearchParams(window.location.search);
+  const id = sp.get("id");
+  getFilm(id);
 });
 
 async function getFilm(id) {
   let film;
   try {
-    film = await fetchFilm(id)
-    film.planets = await fetchPlanets(id)
-    film.vehicles = await fetchVehicles(id)
-    film.species = await fetchSpecies(id)
-    film.starships = await fetchStarships(id)
-  }
-  catch (ex) {
+    film = await fetchFilm(id);
+    film.planets = await fetchPlanets(id);
+    film.vehicles = await fetchVehicles(id);
+    film.species = await fetchSpecies(id);
+    film.starships = await fetchStarships(id);
+  } catch (ex) {
     console.error(`Error reading character ${id} data.`, ex.message);
   }
   renderFilm(character);
@@ -48,31 +47,53 @@ async function getFilm(id) {
 
 async function fetchFilm(id) {
   let filmUrl = `${baseUrl}/films/${id}`;
-  return await fetch(characterUrl)
-    .then(res => res.json())
+  return await fetch(filmUrl).then((res) => res.json());
 }
 
-async function fetchHomeworld(character) {
-  const url = `${baseUrl}/planets/${character?.homeworld}`;
-  const planet = await fetch(url)
-    .then(res => res.json())
-  return planet;
+async function fetchPlanets(id) {
+  const url = `${baseUrl}/films/${id}/planets`;
+  const planets = await fetch(url).then((res) => res.json());
+  return planets;
 }
 
-async function fetchFilms(character) {
-  const url = `${baseUrl}/characters/${character?.id}/films`;
-  const films = await fetch(url)
-    .then(res => res.json())
-  return films;
+async function fetchVehicles(id) {
+  const url = `${baseUrl}/films/${id}/vehicles`;
+  const vehicles = await fetch(url).then((res) => res.json());
+  return vehicles;
 }
 
-const renderCharacter = character => {
-  document.title = `SWAPI - ${character?.name}`;  // Just to make the browser tab say their name
-  nameH1.textContent = character?.name;
-  heightSpan.textContent = character?.height;
-  massSpan.textContent = character?.mass;
-  birthYearSpan.textContent = character?.birth_year;
-  homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
-  const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
-  filmsUl.innerHTML = filmsLis.join("");
+async function fetchSpecies(id) {
+  const url = `${baseUrl}/films/${id}/species`;
+  const species = await fetch(url).then((res) => res.json());
+  return species;
 }
+
+async function fetchStarships(id) {
+  const url = `${baseUrl}/films/${id}/starships`;
+  const starships = await fetch(url).then((res) => res.json());
+  return starships;
+}
+
+const renderFilm = (film) => {
+  document.title = `SWAPI - ${film?.title}`;
+
+  title.textContent = character?.title;
+  producer.textContent = character?.producer;
+  episode.textContent = character?.episode;
+  director.textContent = character?.director;
+  release_date.textContent = character?.release_date;
+  opening_crawl.textContent = character?.opening_crawl;
+
+  const planetsList = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`);
+  planetsUl.innerHTML = planetsList.join("");
+
+  const vehiclesList = film?.vehicles?.map(vehicles => `<li><a href="/vehicles.html?id=${vehicles.id}">${vehicles.vehicles_class}</li>`);
+  vehiclesUl.innerHTML = vehiclesList.join("");
+
+  const speciesList = film?.species?.map(species => `<li><a href="/species.html?id=${species.id}">${species.name}</li>`);
+  speciesUl.innerHTML = speciesList.join("");
+
+  const starshipsList = film?.starships?.map(starships => `<li><a href="/starships.html?id=${starships.id}">${starships.starship_class}</li>`);
+  starshipsUl.innerHTML = starshipsList.join("");
+};
+
