@@ -1,5 +1,5 @@
-let producer;
 let title;
+let producer;
 let episode;
 let director;
 let release_date;
@@ -14,15 +14,21 @@ const baseUrl = `http://localhost:9001/api`;
 
 // Runs on page load
 addEventListener('DOMContentLoaded', () => {
-  nameH1 = document.querySelector('h1#name');
-  birthYearSpan = document.querySelector('span#birth_year');
-  massSpan = document.querySelector('span#mass');
-  heightSpan = document.querySelector('span#height');
-  homeworldSpan = document.querySelector('span#homeworld');
-  filmsUl = document.querySelector('#films>ul');
+  title = document.querySelector('h1#title');
+  producer = document.querySelector('span#producer');
+  episode = document.querySelector('span#episode');
+  director = document.querySelector('span#director');
+  release_date = document.querySelector('span#release_date');
+  opening_crawl = document.querySelector('span#opening_crawl');
+  
+  planetsUl = document.querySelector('#films>ul');
+  vehiclesUl = document.querySelector('#films>ul');
+  speciesUl = document.querySelector('#films>ul');
+  starshipsUl = document.querySelector('#films>ul');
+
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
-  getCharacter(id)
+  getFilm(id)
 });
 
 async function getCharacter(id) {
