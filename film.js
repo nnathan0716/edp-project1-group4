@@ -96,4 +96,3 @@ const renderFilm = (film) => {
   const starshipsList = film?.starships?.map(starships => `<li><a href="/starships.html?id=${starships.id}">${starships.name}</li>`);
   starshipsUl.innerHTML = starshipsList.join("");
 };
-
