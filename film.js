@@ -87,7 +87,7 @@ const renderFilm = (film) => {
   const planetsList = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`);
   planetsUl.innerHTML = planetsList.join("");
 
-  const vehiclesList = film?.vehicles?.map(vehicles => `<li><a href="/vehicles.html?id=${vehicles.id}">${vehicles.name}</li>`);
+  const vehiclesList = film?.vehicles?.map(vehicles => `<li><a href="/vehicle.html?id=${vehicles.id}">${vehicles.name}</li>`);
   vehiclesUl.innerHTML = vehiclesList.join("");
 
   const speciesList = film?.species?.map(species => `<li><a href="/species.html?id=${species.id}">${species.name}</li>`);
