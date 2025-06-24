@@ -12,11 +12,15 @@
 
 <body>
   <div>
-    <h1>Star Wars Universe Lookup</h1>
-    <label for="searchString">Who you looking for? <span class="small">(Regular expressions are cool
-        here)</span></label>
+    <!-- Title with ID -->
+    <h1 id="starting-page-title">Star Wars Universe Lookup</h1>
+    
+    <!-- New Tagline -->
+    <p id="starting-page-description">Explore the Galaxy, One Character at a Time!</p>
+    
     <input id="searchString" oninput="filterCharacters()" autocomplete="off" />
   </div>
+  
   <section id="charactersList">
   </section>
 </body>
