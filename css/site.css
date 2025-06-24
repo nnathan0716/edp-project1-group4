@@ -24,7 +24,7 @@ p {
 body, html {
   height: 100%;
   width: 100%;
-  background-image: url('assets/images/nightsky.jpg');
+  background-image: url('../assets/images/nightsky.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
