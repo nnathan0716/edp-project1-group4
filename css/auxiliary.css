@@ -34,18 +34,6 @@ button {
   border: 1px solid var(--dark2);
 }
 
-input {
-  display: block;
-  width: 95%;
-  font-weight: bold;
-  font-size: 1.1em;
-  line-height: 1.5em;
-  border: none;
-  border-bottom: 2px solid var(--dark2);
-  outline: none;
-  margin: 5px;
-}
-
 label {
   font-weight: bold;
   font-size: 1.1em;
@@ -56,27 +44,8 @@ label {
   font-weight: normal;
 }
 
-/* Characters */
-#charactersList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0;
-}
-
-#charactersList div {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid var(--dark2);
-  border-radius: 5px;
-  color: var(--dark2);
-  background-color: var(--light2);
-  font-weight: bold;
-}
-
-/* Character page */
-h1#name {
-  margin: 50px;
+h1#title {
+  text-align: center;
 }
 
 #generalInfo {
@@ -115,6 +84,9 @@ section#species ul,
 section#starships ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 section#planets a,
