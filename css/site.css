@@ -63,6 +63,12 @@ label {
   font-weight: normal;
 }
 
+h1#title,
+h1#name,
+h1#planet-name {
+  text-align: center;
+}
+
 /* Characters */
 #charactersList {
   display: flex;
@@ -135,6 +141,7 @@ section#planets a {
 
 /* Films and Characters Sections */
 section#characters,
+section#planets,
 section#films,
 section#vehicles,
 section#species,
@@ -143,15 +150,20 @@ section#starships {
 }
 
 section#characters ul,
+section#planets ul,
 section#films ul,
 section#vehicles ul,
 section#species ul,
 section#starships ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 section#characters a,
+section#planets a,
 section#films a,
 section#vehicles a,
 section#species a,
