@@ -1,6 +1,7 @@
 let characters = [];
 let matchingCharacters = [];
 const charactersList = document.querySelector("#charactersList")
+localStorage.setItem("page", "home");
 
 document.addEventListener('DOMContentLoaded', getCharacters)
 
@@ -37,3 +38,4 @@ const renderCharacters = characters => {
 }
 
 const goToCharacterPage = id => window.location = `/character.html?id=${id}`
+console.log(localStorage)
