@@ -135,18 +135,51 @@ section#planets a {
 
 /* Films and Characters Sections */
 section#characters,
-section#films {
+section#films,
+section#vehicles,
+section#species,
+section#starships {
   margin: 50px;
 }
 
 section#characters ul,
-section#films ul {
+section#films ul,
+section#vehicles ul,
+section#species ul,
+section#starships ul {
   list-style-type: none;
   padding: 0;
 }
 
 section#characters a,
-section#films a {
+section#films a,
+section#vehicles a,
+section#species a,
+section#starships a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.1em;
+
+  background-color: var(--light2);
+  color: var(--dark2);
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--dark2);
+}
+
+/* Vehicle page */
+section#drivers {
+  margin: 50px;
+}
+
+section#drivers ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+section#drivers a{
   display: inline-block;
   text-decoration: none;
   font-size: 1.1em;
