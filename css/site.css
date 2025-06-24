@@ -189,6 +189,9 @@ section#drivers {
 section#drivers ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 section#drivers a{
