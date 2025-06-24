@@ -79,7 +79,7 @@ const renderFilm = (film) => {
 
   title.textContent = film?.title;
   producer.textContent = film?.producer;
-  episode.textContent = film?.episode;
+  episode.textContent = film?.episode_id;
   director.textContent = film?.director;
   release_date.textContent = film?.release_date;
   opening_crawl.textContent = film?.opening_crawl;
